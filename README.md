@@ -1,5 +1,5 @@
 <!-- LOGO -->
-<img align="right" style="padding-left:2rem;background:#fff;" src="client/public/logo192.png" alt="Logo" width="110" height="110">
+<img align="right" style="padding-left:2rem;background:#fff;" src="client/public/logo192.png" alt="Logo" width="80" height="80">
 
 # PERN Template
 
