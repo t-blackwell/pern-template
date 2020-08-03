@@ -42,7 +42,13 @@ export default function (state = initialState, action: any) {
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('userData');
 
-      return { isAuthenticated: false };
+      return {
+        ...state,
+        isAuthenticated: false,
+        accessToken: null,
+        refreshToken: null,
+        userData: null,
+      };
     default:
       return state;
   }
