@@ -3,7 +3,7 @@ import { globalNotification } from '../actionTypes';
 const initialState = {
   snackbar: {
     show: false,
-    severity: '',
+    severity: 'info',
     message: '',
   },
 };
@@ -23,7 +23,6 @@ export default function (state = initialState, action: any) {
         ...state,
         snackbar: {
           show: false,
-          severity: '',
           message: '',
         },
       };
