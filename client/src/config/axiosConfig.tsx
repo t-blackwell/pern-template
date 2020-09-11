@@ -7,14 +7,6 @@ const refreshTokenAction = (error: any) => {
   const originalRequest = error.config;
   const { dispatch } = store;
 
-  if (
-    error.response.status === 401 &&
-    originalRequest.url === 'http://localhost:5000/authentication/refresh'
-  ) {
-    history.push('/login');
-    return Promise.reject(error);
-  }
-
   // Attempt a token refresh
   if (error.response.status === 401 && !originalRequest._retry) {
     originalRequest._retry = true;
@@ -34,6 +26,10 @@ const refreshTokenAction = (error: any) => {
           originalRequest.headers['authorization'] = newAccessToken;
           return axios(originalRequest);
         }
+      })
+      .catch((err) => {
+        //redirect to sign in page if token refresh fails
+        history.push('/signin');
       });
   }
   return Promise.reject(error);

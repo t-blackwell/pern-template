@@ -84,17 +84,22 @@ module.exports.refresh = (req: Request, res: Response, next: NextFunction) => {
     refreshToken,
     process.env.REFRESH_TOKEN_SECRET,
     (err: Error, tokenData: any) => {
-      if (err) throw err;
-
-      const userData = tokenData.userData;
-      const accessToken = jwt.sign(
-        { userData },
-        process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: '15m' }
-      );
-      res.status(200).json({
-        data: accessToken,
-      });
+      if (err) {
+        res.status(401).json({
+          data: null,
+          message: 'Invalid token.',
+        });
+      } else {
+        const userData = tokenData.userData;
+        const accessToken = jwt.sign(
+          { userData },
+          process.env.ACCESS_TOKEN_SECRET,
+          { expiresIn: '15m' }
+        );
+        res.status(200).json({
+          data: accessToken,
+        });
+      }
     }
   );
 };
