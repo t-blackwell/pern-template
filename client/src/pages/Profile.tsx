@@ -62,9 +62,9 @@ const Profile = () => {
           <Box>
             <Alert severity="warning">
               <AlertTitle>Protected Route</AlertTitle>
-              This page uses a protected route that is only accessible if there
-              is an access token present. The access token is validated when a
-              request is made to the server to collect private information i.e.
+              This page uses a protected route that is only accessible if an
+              access token is present. The access token is validated when a
+              request is made to the server to collect private information e.g.
               profile details.
             </Alert>
           </Box>
